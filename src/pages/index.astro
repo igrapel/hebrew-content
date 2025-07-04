@@ -2,14 +2,14 @@
 // src/pages/index.astro
 const booklets = [
   {
-    id: "intro-hebrew",
-    title: "Hebrew - Level 1",
-    preview: "/booklets/humash.pdf",
-    image: "/images/humash.jpg",
+    id: "1",
+    title: "Jewish Months Poster",
+    preview: "/booklets/heb_poster.jpeg",
+    image: "/images/heb_poster.jpeg",
     stripeUrl: "https://buy.stripe.com/test_abc123", // Stripe checkout link
   },
   {
-    id: "Intermediate-Hebrew",
+    id: "2",
     title: "Hebrew - Level 2",
     preview: "/booklets/humash.pdf",
     image: "/images/humash.jpg",
@@ -137,10 +137,10 @@ p a{
   <h1 style="text-align: center; width: 100%; margin-bottom: 0;">Hebrew Booklets for Sale</h1>
   <ul>
     {booklets.map(booklet => (
-      <li key={booklet.id}>
+      <li>
         <h2 style="font-size: 1.1em; white-space: nowrap; margin-bottom: 0.7em;">{booklet.title}</h2>
         <img src={booklet.image} alt={booklet.title} width="200" />
-        <p><a href={booklet.stripeUrl} target="_blank">Buy Now</a></p>
+        <p><a href={`/product/${booklet.id}`}>Buy Now</a></p>
       </li>
     ))}
   </ul>

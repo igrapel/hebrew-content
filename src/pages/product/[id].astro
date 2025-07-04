@@ -1,0 +1,26 @@
+---
+// product/[id].astro
+import { booklets } from '../../data/booklets.js';
+
+export async function getStaticPaths() {
+  return booklets.map((b) => ({
+    params: { id: b.id },
+  }));
+}
+
+const { id } = Astro.params;
+const product = booklets.find(b => b.id === id);
+
+if (!product) {
+  throw new Error("Product not found");
+}
+---
+
+<html lang="en">
+  <head>
+    <title>{product.title}</title>
+  </head>
+  <body>
+    <h1>Thank you for your interest in {product.title}!</h1>
+  </body>
+</html>
