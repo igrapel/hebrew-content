@@ -1,0 +1,107 @@
+---
+const product = {
+  title: "Jewish Calendar Hebrew Months - A4 Prints",
+  image: "/images/heb_poster.jpeg",
+  price: 10.00,
+  stripeUrl: "https://buy.stripe.com/test_abc123"
+};
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{product.title}</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 2rem;
+        background-color: #fdfcf8;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        text-align: center;
+        color: #2e2b2b;
+      }
+
+      img {
+        max-width: 100%;
+        width: 300px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        margin-bottom: 1.5rem;
+      }
+
+      p {
+        max-width: 600px;
+        text-align: center;
+        line-height: 1.6;
+        margin: 1rem 0;
+      }
+
+      ul {
+        list-style: disc;
+        padding-left: 1.5rem;
+        max-width: 600px;
+        margin: 1rem auto;
+      }
+
+      li {
+        margin-bottom: 0.5rem;
+      }
+
+      form {
+        margin-top: 2rem;
+      }
+
+      button {
+        background-color: #006d77;
+        color: #fff;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #00565f;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>{product.title}</h1>
+
+    <img src={product.image} alt={product.title} />
+
+    <p>
+      Bring the beauty and rhythm of the Hebrew calendar into your classroom or home
+      with this vibrant set of A4-sized prints featuring the 12 Jewish months...
+    </p>
+
+    <ul>
+      <li>Classrooms and Hebrew schools</li>
+      <li>Home learning spaces</li>
+      <li>Bulletin boards or seasonal displays</li>
+    </ul>
+
+    <p>
+      Printed on high-quality paper, these posters serve as a visual aid to help students
+      learn the names, order, and flow of the Jewish year. A great addition to any Judaic
+      curriculum or environment.
+    </p>
+
+    <form method="GET" action={product.stripeUrl}>
+      <button type="submit">Buy for ${product.price.toFixed(2)}</button>
+    </form>
+  </body>
+</html>

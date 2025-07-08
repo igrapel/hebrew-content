@@ -4,16 +4,14 @@ const booklets = [
   {
     id: "1",
     title: "Jewish Months Poster",
-    preview: "/booklets/heb_poster.jpeg",
     image: "/images/heb_poster.jpeg",
-    stripeUrl: "https://buy.stripe.com/test_abc123", // Stripe checkout link
+    page: "jewish-calendar" // new slug matching the product filename
   },
   {
     id: "2",
     title: "Hebrew - Level 2",
-    preview: "/booklets/humash.pdf",
     image: "/images/humash.jpg",
-    stripeUrl: "https://buy.stripe.com/test_abc123", // Stripe checkout link
+    page: "hebrew-level-2"
   },
 ];
 ---
@@ -136,14 +134,16 @@ p a{
 <main class="content">
   <h1 style="text-align: center; width: 100%; margin-bottom: 0;">Hebrew Booklets for Sale</h1>
   <ul>
-    {booklets.map(booklet => (
-      <li>
-        <h2 style="font-size: 1.1em; white-space: nowrap; margin-bottom: 0.7em;">{booklet.title}</h2>
-        <img src={booklet.image} alt={booklet.title} width="200" />
-        <p><a href={`/product/${booklet.id}`}>Buy Now</a></p>
-      </li>
-    ))}
-  </ul>
+  {booklets.map(booklet => (
+    <li>
+      <h2 style="font-size: 1.1em; white-space: nowrap; margin-bottom: 0.7em;">
+        {booklet.title}
+      </h2>
+      <img src={booklet.image} alt={booklet.title} width="200" />
+      <p><a href={`/product/${booklet.page}`}>Buy Now</a></p>
+    </li>
+  ))}
+</ul>
 </main>
 </main>
   </body>
