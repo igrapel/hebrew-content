@@ -5,7 +5,7 @@ const booklets = [
     id: "1",
     title: "Jewish Months Poster",
     image: "/images/heb_poster.jpeg",
-    page: "jewish-calendar" // new slug matching the product filename
+    page: "jewish-calendar"
   },
   {
     id: "2",
@@ -16,135 +16,145 @@ const booklets = [
 ];
 ---
 
-<html>
+<html lang="en">
   <head>
     <title>Hebrew Booklets</title>
-	<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+    
+    <!-- Font Optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet" />
 
     <style>
-      body, html {
-        height: 100%;
+      html, body {
         margin: 0;
         padding: 0;
+        height: 100%;
       }
-      body {
-		/* Add some space from the top */
-  		padding-top: 3rem; /* or try 5rem or more */
-  		height: 100vh; /* ensure body fills viewport height */
-  		box-sizing: border-box; /* include padding in height */
 
-      /*
-      display: flex;
-      justify-content: center; 
-      align-items: center;    
-      flex-direction: column; 
-      */
-      /* stack children vertically */
-      font-family: 'Montserrat', 'JetBrains Mono', monospace;
-  
-      background: #050b39;
-		  color:aliceblue
+      body {
+        padding-top: 3rem;
+        height: 100vh;
+        box-sizing: border-box;
+        font-family: 'JetBrains Mono', monospace;
+        background: #050b39;
+        color: aliceblue;
       }
+
+      .top-left-link {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        font-size: 0.7em;
+      }
+
+      .top-left-link a {
+        color: white;
+        background-color: #0070f3;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 0.4rem 0.8rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        display: inline-block;
+        font-size: 1.5em;
+        margin-bottom: 0.5rem;
+      }
+
+      .top-left-link a:hover {
+        background-color: #005bb5;
+        text-decoration: none;
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #ffffff;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        border-bottom: 2px solid #0070f3;
+        padding-bottom: 0.5rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
       ul {
         list-style: none;
         padding: 0;
         margin: 2rem 0;
         display: flex;
         flex-direction: row;
-        gap: 7rem; /* adds spacing between booklets */
+        gap: 7rem;
         justify-content: center;
         flex-wrap: wrap;
       }
+
       li {
-      margin-bottom: 0; /* remove vertical spacing since they're now in a row */
-      text-align: center;
-      max-width: 220px;
-}
+        margin-bottom: 0;
+        text-align: center;
+        max-width: 220px;
+      }
+
+      h2 {
+        font-size: 1.1em;
+        white-space: nowrap;
+        margin-bottom: 0.7em;
+      }
+
       img {
         border: 1px solid #ccc;
         border-radius: 8px;
+        width: 200px;
+        height: 300px;
+        object-fit: cover;
       }
+
       a {
         text-decoration: none;
         color: #0070f3;
         font-weight: bold;
       }
+
       a:hover {
         text-decoration: underline;
       }
 
-	  .top-left-link {
-  	position: absolute;
-  	top: 1rem;
-  	left: 1rem;
-    font-size: .7em; /* Adjust font size for smaller text */
-	}
-
-.top-left-link a {
-  color: white;
-  background-color: #0070f3; /* blue background */
-  text-decoration: none;
-  font-weight: bold;
-  padding: 0.4rem 0.8rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  display: inline-block;
-  font-size: 1.5em;
-  margin-bottom: 0.5rem; /* 👈 Adds space between the buttons */
-}
-
-.top-left-link a:hover {
-  background-color: #005bb5;
-  text-decoration: none;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
- 
-}
-
-h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #ffffff;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  border-bottom: 2px solid #0070f3;
-  padding-bottom: 0.5rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-p a{
-  color: aquamarine;
-}
-
-  </style>
+      p a {
+        color: aquamarine;
+      }
+    </style>
   </head>
-  <body>
-	<div class="top-left-link">
-  		<a href="/about">About Us</a>
-		<br>
-		<a href="/shipping">Shipping & Handling Policy</a>
-	</div>
 
-<main class="content">
-  <h1 style="text-align: center; width: 100%; margin-bottom: 0;">Hebrew Booklets for Sale!</h1>
-  <ul>
-  {booklets.map(booklet => (
-    <li>
-      <h2 style="font-size: 1.1em; white-space: nowrap; margin-bottom: 0.7em;">
-        {booklet.title}
-      </h2>
-      <img src={booklet.image} alt={booklet.title} width="200" />
-      <p><a href={`/product/${booklet.page}`}>Buy Now</a></p>
-    </li>
-  ))}
-</ul>
-</main>
-</main>
+  <body>
+    <div class="top-left-link">
+      <a href="/about">About Us</a><br />
+      <a href="/shipping">Shipping & Handling Policy</a>
+    </div>
+
+    <main class="content">
+      <h1>Hebrew Booklets for Sale!</h1>
+      <ul>
+        {booklets.map((booklet) => (
+          <li>
+            <h2>{booklet.title}</h2>
+            <img
+              src={booklet.image}
+              alt={booklet.title}
+              width="200"
+              height="300"
+              loading="lazy"
+            />
+            <p><a href={`/product/${booklet.page}`}>Buy Now</a></p>
+          </li>
+        ))}
+      </ul>
+    </main>
   </body>
 </html>
